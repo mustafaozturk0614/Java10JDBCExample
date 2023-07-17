@@ -1,6 +1,7 @@
 package com.bilgeadam.repository;
 import com.bilgeadam.repository.entity.Takim;
 import com.bilgeadam.utility.ConnectionProvider;
+import com.bilgeadam.utility.ICrud;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -26,7 +27,6 @@ public class TakimRepository  implements ICrud<Takim> {
         finally {
             connectionProvider.closeConnection();
         }
-
     }
 
     @Override
@@ -40,7 +40,7 @@ public class TakimRepository  implements ICrud<Takim> {
     }
 
     @Override
-    public List<Takim> findAl() {
+    public List<Takim> findAll() {
         return null;
     }
 

@@ -11,6 +11,6 @@ public class Futbolcu {
     private String ad;
     private String mevki;
     private int formaNo;
-    private Long deger;
+    private long deger;
     private Long takim_id;
 }

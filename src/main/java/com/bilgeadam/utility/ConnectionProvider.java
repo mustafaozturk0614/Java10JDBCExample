@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @Getter
@@ -14,6 +15,7 @@ public class ConnectionProvider {
     private  final String DB_NAME="java10FutbolDb";
     private  final String URL="jdbc:postgresql://localhost:5432/"+DB_NAME;
     private Connection connection;
+    private PreparedStatement preparedStatement;
     public boolean openConnection(){
         try {
             connection= DriverManager.getConnection(URL,USERNAME,PASSWORD);
@@ -34,6 +36,18 @@ public class ConnectionProvider {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
+    }
+
+    public PreparedStatement getPreparedStatement(String sql){
+          openConnection();
+
+        try {
+            preparedStatement=connection.prepareStatement(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return  preparedStatement;
     }
 
 }
